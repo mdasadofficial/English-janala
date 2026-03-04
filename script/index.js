@@ -160,3 +160,27 @@ document.getElementById("btn-search").addEventListener("click", () => {
         });
 
 });
+
+
+const showFaqAns = (element) => {
+    const parent = element.closest(".faq-item");
+    const answer = parent.querySelector(".faq-ans");
+    const button = parent.querySelector(".faq-btn");
+
+    // Check if the answer is currently hidden
+    if (answer.classList.contains("hidden")) {
+        // If hidden, first close all answers
+        document.querySelectorAll(".faq-ans").forEach(ans => ans.classList.add("hidden"));
+        document.querySelectorAll(".faq-btn").forEach(btn => btn.innerText = "+");
+        
+        // Now open the clicked answer
+        answer.classList.remove("hidden");
+        button.innerText = "−";
+    } else {
+        // If already open, just close it
+        answer.classList.add("hidden");
+        button.innerText = "+";
+    }
+};
+
+

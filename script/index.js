@@ -3,9 +3,9 @@ const createElements = (arr) => {
     return htmlElements.join(" ");
 }
 function pronounceWord(word) {
-  const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = "en-EN"; // English
-  window.speechSynthesis.speak(utterance);
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-EN"; // English
+    window.speechSynthesis.speak(utterance);
 }
 const manageSpinner = (status) => {
     if (status == true) {
@@ -97,15 +97,20 @@ const displayLevelWord = (words) => {
         // console.log(word);
         const card = document.createElement("div");
         card.innerHTML = `  
-       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-white rounded-xl shadow-sm text-center py-15 px-5 space-y-4">
-            <h2 class="font-bold text-2xl">${word.word ? word.word : "শব্দ পাওয়া যায়নি।"}</h2>
-            <p class="font-semibold">Meaning / Pronunciations</p>
-            <div class="font-bangle text-2xl font-medium">"${word.meaning ? word.meaning : "অর্থ পাওয়া যাইনি"} / ${word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যায়নি।"}"</div>
-            <div class="flex justify-between items-center">
-                <button onclick="loadWordDetail(${word.id})" class="btn bg-[#1A91FF25] hover:bg-sky-500"><i class="fa-solid fa-circle-info"></i></button>
-                <button onClick="pronounceWord('${word.word}')" class="btn bg-[#1A91FF25] hover:bg-sky-500"><i class="fa-solid fa-volume-high"></i></i></button>
-            </div>
-
+       
+    <div class="bg-white rounded-xl shadow-sm text-center py-15 px-5 space-y-4
+    ">
+        <h2 class="font-bold text-2xl">${word.word ? word.word : "শব্দ পাওয়া যায়নি।"}</h2>
+        <p class="font-semibold">Meaning / Pronunciations</p>
+        <div class="font-bangle text-2xl font-medium">"${word.meaning ? word.meaning : "অর্থ পাওয়া যাইনি"} /
+            ${word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যায়নি।"}"</div>
+        <div class="flex justify-between items-center">
+            <button onclick="loadWordDetail(${word.id})" class="btn bg-[#1A91FF25] hover:bg-sky-500"><i
+                    class="fa-solid fa-circle-info"></i></button>
+            <button onClick="pronounceWord('${word.word}')" class="btn bg-[#1A91FF25] hover:bg-sky-500"><i
+                    class="fa-solid fa-volume-high"></i></i></button>
+        </div>
+    
     `;
         wordContainer.append(card);
     });
